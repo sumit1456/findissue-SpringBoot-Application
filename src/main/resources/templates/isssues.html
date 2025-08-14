@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Issues</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+            display : flex;
+            flex-direction : column;
+            justify-content : center;
+     
+        }
+     
+        header {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        main {
+            padding: 2rem 1rem;
+           
+            
+           
+            
+        }
+
+        .issue-list {
+            color: #f1f1f1;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border : 2px solid black;
+            
+          
+           
+            
+           
+         
+        }
+
+        .issue {
+            border-bottom: 1px solid #444;
+            padding: 1rem 0;
+           
+          
+            
+             
+        }
+
+        .issue:last-child {
+            border-bottom: none;
+        }
+
+        .issue-title a {
+            color: black;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .issue-title a:hover {
+            text-decoration: underline;
+        }
+
+        .issue-body {
+            color : black;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+           
+            
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 2rem;
+            position : relative;
+            bottom : 20%;
+            left : 40%;
+            
+        }
+
+        .pagination a, .pagination span {
+            margin: 0 1rem;
+            font-size: 1rem;
+            color: #2d3436;
+            text-decoration: none;
+        }
+
+        .pagination a:hover {
+            color: #0984e3;
+        }
+
+        @media (max-width: 600px) {
+            .issue-title a {
+                font-size: 1rem;
+            }
+
+            .issue-body {
+                font-size: 0.9rem;
+            }
+        }
+        
+        .list-container{
+        	overflow : hidden;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="home">FindIssue</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about">About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Contact</a></li>
+            </ul>
+            <div class="d-flex">
+             <form class="d-flex" role="search" th:action="@{/search-repo}" method="get">
+              <input class="form-control me-2" name="query" type="search" placeholder="Search for repository" aria-label="Search"/>
+              <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             <a class="btn btn-primary ms-3" href="/login">Login to GitHub</a>
+           </div>
+            
+        </div>
+    </div>
+</nav>
+	
+
+
+
+<header>
+    <h1>Open GitHub Issues</h1>
+</header>
+
+<main>
+
+    <div class="list-container">
+    <div class="issue-list">
+        <div th:each="issue : ${issues}" class="issue">
+            <div class="issue-title">
+                <a th:href="${issue.html_url}" th:text="${issue.title}" target="_blank"></a>
+            </div>
+            <div class="issue-body" th:text="${issue.body} ?: 'No description available.'"></div>
+        </div>
+
+        
+    </div>
+
+    
+    
+    </div>
+    
+    
+</main>
+
+       <div class="pagination">
+            <a th:href="@{/issues(org=${org}, repo=${repo}, page=${prevPage})}" th:if="${page > 1}">← Prev</a>
+            <span>Page <span th:text="${page}"></span></span>
+            <a th:href="@{/issues(org=${org}, repo=${repo}, page=${nextPage})}">Next →</a>
+        </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+</body>
+</html>

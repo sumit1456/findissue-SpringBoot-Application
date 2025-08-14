@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Issue Finder App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f6fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h6 {
+            padding-top: 20px;
+        }
+
+        header {
+            background-color: #2f3640;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            margin-top: 5rem;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .description {
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2f3640;
+            color: white;
+            padding: 0.7rem 1.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #74b9ff;
+        }
+
+        .inp {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            padding: 0.7rem 1.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .issue-c {
+            padding: 2rem;
+            background-color: white;
+        }
+
+        .bkg-img {
+            z-index: -1;
+            position: absolute;
+            background-color: gray;
+            height: 110%;
+            width: 100%;
+            top: 15%;
+        }
+
+        .bkg-img img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .b-headline {
+            width: 100%;
+            bottom: 5%;
+            position: absolute;
+        }
+
+        .b-headline h4 {
+            text-align: center;
+        }
+        
+        .img2{
+        	position : absolute;
+        	 mix-blend-mode: darken;
+        	 bottom : -2%;
+        	left : -15%;
+        	
+        }
+        
+        
+        
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">FindIssue</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about">About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Contact</a></li>
+            </ul>
+            <div class="d-flex">
+             <form class="d-flex" role="search" th:action="@{/search-repo}" method="get">
+              <input class="form-control me-2" name="query" type="search" placeholder="Search for repository" aria-label="Search"/>
+              <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             <a class="btn btn-primary ms-3" href="/login">Login to GitHub</a>
+           </div>
+            
+        </div>
+    </div>
+</nav>
+
+<div class="bkg-img">
+    <img src="/images/lap.jpg" alt="background" />
+    <div class="b-headline">
+        <h4>Building future-ready software, one line at a time.</h4>
+    </div>
+</div>
+
+<header>
+    <h1>Welcome to</h1>
+    <h1>Issue Finder App</h1>
+</header>
+
+<main>
+    <div class="container">
+        <div class="issue-c">
+            <h1>GitHub </h1>
+            <p class="description">Find Issues from GitHub</p>
+
+            <form action="/issues" method="get">
+                <input list="orgSuggestions" name="org" placeholder="Enter GitHub organization" class="inp" required>
+                <datalist id="orgSuggestions">
+                    <option value="facebook">
+                    <option value="microsoft">
+                    <option value="google">
+                    <option value="vercel">
+                    <option value="angular">
+                    <option value="vuejs">
+                    <option value="nestjs">
+                    <option value="spring-projects">
+                    <option value="apache">
+                    <option value="hashicorp">
+                    <option value="tensorflow">
+                    <option value="reduxjs">
+                    <option value="elastic">
+                    <option value="kubernetes">
+                    <option value="dotnet">
+                    <option value="flutter">
+                    <option value="pallets">
+                    <option value="django">
+                    <option value="denoland">
+                    <option value="fastai">
+                </datalist>
+
+                <input list="repoSuggestions" name="repo" placeholder="Enter repository" class="inp" required>
+                <datalist id="repoSuggestions">
+                    <option value="react">
+                    <option value="vscode">
+                    <option value="guava">
+                    <option value="next.js">
+                    <option value="angular">
+                    <option value="vue">
+                    <option value="nestjs">
+                    <option value="spring-boot">
+                    <option value="spark">
+                    <option value="terraform">
+                    <option value="tensorflow">
+                    <option value="redux">
+                    <option value="elasticsearch">
+                    <option value="kubernetes">
+                    <option value="aspnetcore">
+                    <option value="flutter">
+                    <option value="flask">
+                    <option value="django">
+                    <option value="deno">
+                    <option value="fastai">
+                </datalist>
+
+                <input type="submit" value="Submit" class="btn" />
+            </form>
+
+            <h6>Enter the organization and repository name above to view open issues on GitHub.</h6>
+        </div>
+    </div>
+   
+</main>
+ <img class="img2" src="/images/phone.jpg" height="500" width="500">
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>

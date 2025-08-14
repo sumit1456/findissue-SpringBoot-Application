@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <style>
+    
+    form{
+    	border : 2px solid black;
+    	width : 20%;
+    	height : 60%;
+    	display : flex;
+    	flex-direction : column;
+    	gap : 10px;
+    	align-items : center;
+    	padding : 20px;
+    	
+    }
+    
+    input{
+    	width : 60%;
+    }
+    
+    .Login-container{
+    	position : relative;
+    	top : 100px;
+    	
+    }
+    
+    
+    </style>
+</head>
+<body>
+<div class="login-container">
+    
+    <form th:action="@{/login}" method="post">
+    <img src="/images/github-logo.png" alt="GitHub Logo" class="logo">
+    <h2>Sign in to Your Account</h2>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Sign in</button>
+    </form>
+</div>
+</body>
+</html>

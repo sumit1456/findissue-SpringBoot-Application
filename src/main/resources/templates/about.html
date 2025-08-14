@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About - GitHub Issues Viewer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+            color: #2d3436;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            text-decoration: none;
+            color: #0984e3;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>About This App</h1>
+</header>
+
+<main>
+    <h2>GitHub Issues Viewer</h2>
+    <p>
+        This simple web application helps you explore open issues from any public GitHub repository. It uses the GitHub REST API to fetch real-time data and displays it in a user-friendly layout.
+    </p>
+ 
+    <p>
+        Features:
+        <ul>
+            <li>Live GitHub issue fetching</li>
+            <li>Pagination support</li>
+            <li>Responsive and clean UI</li>
+        </ul>
+    </p>
+
+    <a href="/" class="back-link">← Back to Home</a>
+</main>
+
+</body>
+</html>
