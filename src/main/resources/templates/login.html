@@ -3,43 +3,82 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <style>
     
     form{
     	border : 2px solid black;
-    	width : 20%;
+    	width : 25%;
     	height : 60%;
     	display : flex;
     	flex-direction : column;
     	gap : 10px;
     	align-items : center;
     	padding : 20px;
+    	border-radius : 20%;
     	
     }
     
     input{
-    	width : 60%;
+    	width : 80%;
+    	outline : none;
+    	border : none;
+    	border-bottom : 2px solid black;
     }
     
-    .Login-container{
-    	position : relative;
-    	top : 100px;
+    .log-c{
+    	height : 100vh;
+    	width : 100%;
+    	display : flex;
+    	align-items : center;
+    	justify-content : center;
     	
+    	
+    }
+    
+    .logo-box{
+    	width : 100%;
+    	height : 20%;
+    	display : flex;
+    	align-items : center;
+    	justify-content : center;
+    }
+    
+    .logo-box img{
+    	height : 100%;
+    	width : 30%;
+    }
+    
+    
+    .f-labels{
+    	width : 80%;
     }
     
     
     </style>
 </head>
 <body>
-<div class="login-container">
+
+ <a href="/home" class="btn">← Back to Home</a>
+<div class="log-c">
     
     <form th:action="@{/login}" method="post">
-    <img src="/images/github-logo.png" alt="GitHub Logo" class="logo">
-    <h2>Sign in to Your Account</h2>
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Sign in</button>
+    
+    <div class="logo-box">
+    
+    	  <img src="/images/git-hub-logo.png" alt="error" class="logo">
+    
+    </div>
+     <h2 style="text-align : center">Sign in to Your GitHub Account</h2>
+  
+   	    <label class="f-labels">email</label>
+        <input type="text" name="email" placeholder="" required>
+        <label class="f-labels">password</label>
+        <input type="password" name="password" placeholder="" required>
+        <button type="submit" class="btn btn-secondary">submit</button>
     </form>
 </div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.findissue.service.SearchRepo;
@@ -18,6 +19,12 @@ public class RepositoryController {
     		@RequestParam(defaultValue="1") int page, @RequestParam(defaultValue="4") int size) {
 	return sr.searchRepo(query, model, page, size);
 }
+	
+	@PostMapping("/login")
+	public String loginGitHub(@RequestParam String email, @RequestParam String password) {
+		
+		return "index";
+	}
 
 
 }
